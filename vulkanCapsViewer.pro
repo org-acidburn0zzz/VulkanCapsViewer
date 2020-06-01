@@ -30,7 +30,7 @@ linux:!android {
         QT += x11extras
         DEFINES += VK_USE_PLATFORM_XCB_KHR
     }
-    target.path = /usr/bin
+    target.path = /usr/local/bin
     INSTALLS += target
     desktop.files = vulkanCapsViewer.desktop
     desktop.path = /usr/share/applications
