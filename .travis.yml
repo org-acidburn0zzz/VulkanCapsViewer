@@ -34,6 +34,7 @@ matrix:
       - chmod a+x linuxdeployqt-continuous-x86_64.AppImage
       # export VERSION=... # linuxdeployqt uses this for naming the file
       - cp appdir/usr/local/bin/vulkanCapsViewer appdir/usr/bin/vulkanCapsViewer
+      - cp vulkanCapsViewer.png appdir/usr/share/icons/hicolor/256x256/apps/vulkanCapsViewer.png
       - ./linuxdeployqt-continuous-x86_64.AppImage appdir/usr/share/applications/* -appimage
     after_success:
       - curl -T /usr/local/bin/vulkanCapsViewer*.AppImage -u ${ftp_user}:${ftp_pass} ftp://ftp.delphigl.de  
