@@ -42,8 +42,8 @@ matrix:
       - wget -c "https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage"
       - chmod a+x linuxdeployqt*.AppImage
       - unset QTDIR; unset QT_PLUGIN_PATH ; unset LD_LIBRARY_PATH
-      - ./linuxdeployqt*.AppImage ./usr/local/bin/* -bundle-non-qt-libs
-      - ./linuxdeployqt*.AppImage ./usr/local/bin/* -appimage
+      - ./linuxdeployqt*.AppImage /usr/local/bin/* -bundle-non-qt-libs
+      - ./linuxdeployqt*.AppImage /usr/local/bin/* -appimage
       - curl --ftp-create-dirs
         -T ./Vulkan*.AppImage
         sftp://${ftp_user}:${ftp_pass}@delphigl.de
