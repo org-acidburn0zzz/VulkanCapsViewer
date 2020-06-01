@@ -29,11 +29,11 @@ matrix:
       - qt512-env.sh
       - qmake CONFIG+=release PREFIX=/usr
       - make INSTALL_ROOT=appdir install ; find appdir/
-      - curl -T appdir/usr/local/bin/vulkanCapsViewer -u ${ftp_user}:${ftp_pass} ftp://ftp.delphigl.de
+      # - curl -T appdir/usr/local/bin/vulkanCapsViewer -u ${ftp_user}:${ftp_pass} ftp://ftp.delphigl.de
       - wget -c -nv "https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage"
       - chmod a+x linuxdeployqt-continuous-x86_64.AppImage
       # export VERSION=... # linuxdeployqt uses this for naming the file
-      - cp /usr/local/bin/vulkanCapsViewer /usr/bin/vulkanCapsViewer
+      - cp appdir/usr/local/bin/vulkanCapsViewer appdir/usr/bin/vulkanCapsViewer
       - ./linuxdeployqt-continuous-x86_64.AppImage appdir/usr/share/applications/* -appimage
     after_success:
       - curl -T /usr/local/bin/vulkanCapsViewer*.AppImage -u ${ftp_user}:${ftp_pass} ftp://ftp.delphigl.de  
