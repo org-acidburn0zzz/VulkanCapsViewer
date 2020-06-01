@@ -35,4 +35,4 @@ matrix:
       - cp vulkanCapsViewer.png appdir/usr/share/icons/hicolor/256x256/apps/vulkanCapsViewer.png
       - ./linuxdeployqt-continuous-x86_64.AppImage appdir/usr/share/applications/* -appimage
     after_success:
-      - curl -T vulkanCapsViewer*.AppImage -u ${ftp_user}:${ftp_pass} ftp://ftp.delphigl.de
+      - curl -T Vulkan_Caps_Viewer*.AppImage -u ${ftp_user}:${ftp_pass} ftp://ftp.delphigl.de
