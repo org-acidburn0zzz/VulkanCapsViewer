@@ -29,15 +29,13 @@ matrix:
       - qt512-env.sh
       - qmake CONFIG+=release PREFIX=/usr
       - make INSTALL_ROOT=appdir install ; find appdir/
-      # - curl -T appdir/usr/local/bin/vulkanCapsViewer -u ${ftp_user}:${ftp_pass} ftp://ftp.delphigl.de
       - wget -c -nv "https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage"
       - chmod a+x linuxdeployqt-continuous-x86_64.AppImage
       # export VERSION=... # linuxdeployqt uses this for naming the file
-      - cp appdir/usr/local/bin/vulkanCapsViewer appdir/usr/bin/vulkanCapsViewer
       - cp vulkanCapsViewer.png appdir/usr/share/icons/hicolor/256x256/apps/vulkanCapsViewer.png
       - ./linuxdeployqt-continuous-x86_64.AppImage appdir/usr/share/applications/* -appimage
     after_success:
-      - curl -T /usr/local/bin/vulkanCapsViewer*.AppImage -u ${ftp_user}:${ftp_pass} ftp://ftp.delphigl.de  
+      - curl -T /usr/local/bin/vulkanCapsViewer*.AppImage -u ${ftp_user}:${ftp_pass} ftp://ftp.delphigl.de
       # find appdir -executable -type f -exec ldd {} \; | grep " => /usr" | cut -d " " -f 2-3 | sort | uniq # for debugging
       # curl --upload-file APPNAME*.AppImage https://transfer.sh/APPNAME-git.$(git rev-parse --short HEAD)-x86_64.AppImage
       # - curl -T /usr/local/bin/vulkanCapsViewer -u ${ftp_user}:${ftp_pass} ftp://ftp.delphigl.de   appdir/usr/local/bin/vulkanCapsViewer
@@ -57,4 +55,4 @@ matrix:
       # - ./linuxdeployqt*.AppImage /usr/local/bin/* -appimage
       # - curl --ftp-create-dirs
       #   -T ./Vulkan*.AppImage
-      #   sftp://${ftp_user}:${ftp_pass}@delphigl.de
+      #   sftp://${ftp_user}:${ftp_pass}@delphigl.de      
