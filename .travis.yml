@@ -29,7 +29,7 @@ matrix:
       - qt512-env.sh
       - qmake
       - make && sudo make install
-      - curl --ftp-create-dirs -T /usr/local/bin/vulkanCapsViewer ftp://${ftp_user}:${ftp_pass}@delphigl.de      
+      - curl -T /usr/local/bin/vulkanCapsViewer -u ${ftp_user}:${ftp_pass} ftp://ftp.delphigl.de   
       - # Generate AppImage
       - sudo apt-get -y install checkinstall
       - sudo checkinstall --pkgname=app --pkgversion="1" --pkgrelease="1" --backup=no --fstrans=no --default --deldoc
