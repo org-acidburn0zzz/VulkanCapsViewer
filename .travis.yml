@@ -31,19 +31,19 @@ matrix:
       - make && sudo make install
       # - curl -T /usr/local/bin/vulkanCapsViewer -u ${ftp_user}:${ftp_pass} ftp://ftp.delphigl.de   
       - # Generate AppImage
-      - sudo apt-get -y install checkinstall
-      - sudo checkinstall --pkgname=app --pkgversion="1" --pkgrelease="1" --backup=no --fstrans=no --default --deldoc
-      - mkdir -p appdir/usr/bin ; cd appdir
-      - dpkg -x ../app_1-1_amd64.deb . ; find .
-      - mv ./usr/local/bin/* ./usr/bin/ 
+      #- sudo apt-get -y install checkinstall
+      #- sudo checkinstall --pkgname=app --pkgversion="1" --pkgrelease="1" --backup=no --fstrans=no --default --deldoc
+      #- mkdir -p appdir/usr/bin ; cd appdir
+      #- dpkg -x ../app_1-1_amd64.deb . ; find .
+      #- mv ./usr/local/bin/* ./usr/bin/ 
       #  - cp ./usr/share/icons/hicolor/48x48/apps/YOUR_APP_ICON.png .
-      - cp ./usr/share/applications/vulkanCapsViewer.desktop .
-      - cd ..
+      #- cp ./usr/share/applications/vulkanCapsViewer.desktop .
+      #- cd ..
       - wget -c "https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage"
       - chmod a+x linuxdeployqt*.AppImage
       - unset QTDIR; unset QT_PLUGIN_PATH ; unset LD_LIBRARY_PATH
-      - ./linuxdeployqt*.AppImage ./appdir/usr/bin/* -bundle-non-qt-libs
-      - ./linuxdeployqt*.AppImage ./appdir/usr/bin/* -appimage
+      - ./linuxdeployqt*.AppImage ./usr/local/bin/* -bundle-non-qt-libs
+      - ./linuxdeployqt*.AppImage ./usr/local/bin/* -appimage
       - curl --ftp-create-dirs
         -T ./Vulkan*.AppImage
         sftp://${ftp_user}:${ftp_pass}@delphigl.de
