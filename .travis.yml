@@ -34,9 +34,9 @@ matrix:
       # export VERSION=... # linuxdeployqt uses this for naming the file
       - cp vulkanCapsViewer.png appdir/usr/share/icons/hicolor/256x256/apps/vulkanCapsViewer.png
       - ./linuxdeployqt-continuous-x86_64.AppImage appdir/usr/share/applications/* -appimage
-  deploy:
-    provider: script
-    script: bash redist/deploy_latest.sh
-    on:
-      branch: qt_auto_deploy
-      tags: false
+    deploy:
+      provider: script
+      script: bash redist/deploy_latest.sh
+      on:
+        branch: qt_auto_deploy
+        tags: false
