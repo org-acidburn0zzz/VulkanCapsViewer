@@ -38,5 +38,5 @@ matrix:
     provider: script
     script: bash redist/deploy_latest.sh
     on:
-      branch: master
+      branch: qt_auto_deploy
       tags: false
