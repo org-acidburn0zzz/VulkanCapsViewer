@@ -35,8 +35,10 @@ matrix:
       - cp vulkanCapsViewer.png appdir/usr/share/icons/hicolor/256x256/apps/vulkanCapsViewer.png
       - ./linuxdeployqt-continuous-x86_64.AppImage appdir/usr/share/applications/* -appimage
     after_success:
-      # - sudo apt-get install -y lftp
-      - curl -T Vulkan_Caps_Viewer*.AppImage -u ${ftp_user}:${ftp_pass} ftp.${ftp_host}:21/
-      # - curl -T Vulkan_Caps_Viewer*.AppImage ftp://${ftp_user}:${ftp_pass}@${ftp_host}:21/Vulkan_Caps_Viewer_latest.AppImage
-      # -u ${ftp_user}:${ftp_pass} ${ftp_host}:21
-      # - lftp -c "set ftps:initial-prot ''; set ftp:ssl-force true; set ftp:ssl-protect-data true; open ftp://$ftp_user:ftp_pass@$ftp_host:21; put -O ./ Vulkan_Caps_Viewer*.AppImage quit;"      
+      if ([ "$TRAVIS_BRANCH" == "master" ] || [ ! -z "$TRAVIS_TAG" ]) && 
+          [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
+        curl -T Vulkan_Caps_Viewer*.AppImage -u ${ftp_user}:${ftp_pass} ftp.${ftp_host}:21/Vulkan_Caps_Viewer_latest.AppImage
+      else
+        curl -T Vulkan_Caps_Viewer*.AppImage -u ${ftp_user}:${ftp_pass} ftp.${ftp_host}:21/Vulkan_Caps_Viewer_${TRAVIS_TAG}.AppImage
+      fi    
+      # - curl -T Vulkan_Caps_Viewer*.AppImage -u ${ftp_user}:${ftp_pass} ftp.${ftp_host}:21/
