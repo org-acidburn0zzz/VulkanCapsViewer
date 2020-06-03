@@ -35,4 +35,5 @@ matrix:
       - cp vulkanCapsViewer.png appdir/usr/share/icons/hicolor/256x256/apps/vulkanCapsViewer.png
       - ./linuxdeployqt-continuous-x86_64.AppImage appdir/usr/share/applications/* -appimage
     after_success:
+      - chmod +x ./redist/deploy.sh
       - ./redist/deploy.sh
